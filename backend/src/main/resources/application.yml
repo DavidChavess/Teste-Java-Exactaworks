@@ -1,0 +1,17 @@
+project.name: Teste-Java
+
+spring:
+  application:
+    name: ${project.name}
+
+  datasource:
+    url: jdbc:postgresql://localhost/testebackend-db
+    username: postgres
+    password: 1234567
+
+jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
