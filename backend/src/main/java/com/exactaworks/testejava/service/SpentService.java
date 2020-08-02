@@ -26,20 +26,24 @@ public class SpentService implements ISpentService {
 	@Override
 	public SpentDto findById(Long id) {
 		Optional<Spent> spent = repository.findById(id);
-
 		if (spent.isPresent()) {
 			return fromDto(spent.get());
 		}
-
 		throw new ObjectNotFoundException("Gasto não encontrado, id= " + id);
 	}
 
 	@Override
-	public SpentDto insert(SpentDto spent) {
-		return null;
+	public SpentDto insert(SpentDto spentDto) {
+		return fromDto(repository.save(toDto(spentDto)));
 	}
 
 	private SpentDto fromDto(Spent spent) {
 		return new SpentDto(spent);
 	}
+	
+	private Spent toDto(SpentDto spentDto) {
+		Spent spent = new Spent(null, spentDto.getPerson(),spentDto.getDescription(),spentDto.getDatetime(),spentDto.getValue());
+		spent.getTags().addAll(spentDto.getTags());
+		return spent;		
+	}	
 }
