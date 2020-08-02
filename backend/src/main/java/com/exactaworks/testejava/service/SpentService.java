@@ -1,17 +1,20 @@
 package com.exactaworks.testejava.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.exactaworks.testejava.dto.SpentDto;
+import com.exactaworks.testejava.exception.ObjectNotFoundException;
+import com.exactaworks.testejava.model.Spent;
 import com.exactaworks.testejava.repository.SpentRepository;
 
 @Service
 public class SpentService implements ISpentService {
-	
+
 	@Autowired
 	private SpentRepository repository;
 
@@ -22,11 +25,21 @@ public class SpentService implements ISpentService {
 
 	@Override
 	public SpentDto findById(Long id) {
-		return null;
+		Optional<Spent> spent = repository.findById(id);
+
+		if (spent.isPresent()) {
+			return fromDto(spent.get());
+		}
+
+		throw new ObjectNotFoundException("Gasto não encontrado, id= " + id);
 	}
 
 	@Override
 	public SpentDto insert(SpentDto spent) {
 		return null;
+	}
+
+	private SpentDto fromDto(Spent spent) {
+		return new SpentDto(spent);
 	}
 }
