@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS spent (
     value DOUBLE PRECISION
 );
 
---rollback DROP TABLE product;
+--rollback DROP TABLE spent
 --rollback DROP SEQUENCE hibernate_sequence;
 
 --changeset outrousuario:2

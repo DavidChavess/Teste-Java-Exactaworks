@@ -36,7 +36,7 @@ public class SpentController {
 	}	
 	
 	@PostMapping
-	@ResponseStatus(HttpStatus.OK)
+	@ResponseStatus(HttpStatus.CREATED)
 	public SpentDto insert(@RequestBody SpentDto spentDto) {
 		return service.insert(spentDto);
 	}
