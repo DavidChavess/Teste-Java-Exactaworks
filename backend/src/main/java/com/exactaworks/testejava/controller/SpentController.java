@@ -2,6 +2,8 @@ package com.exactaworks.testejava.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +39,7 @@ public class SpentController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public SpentDto insert(@RequestBody SpentDto spentDto) {
+	public SpentDto insert(@RequestBody @Valid SpentDto spentDto) {
 		return service.insert(spentDto);
 	}
 	

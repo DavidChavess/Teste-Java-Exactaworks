@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS spent (
     id BIGINT NOT NULL CONSTRAINT spent_pkey PRIMARY KEY,
     person varchar(255) NOT NULL,
     description VARCHAR(255),
-    datetime TIMESTAMP,
-    value DOUBLE PRECISION
+    datetime TIMESTAMP NOT NULL,
+    value DOUBLE PRECISION NOT NULL
 );
 
 --rollback DROP TABLE spent
@@ -21,3 +21,6 @@ CREATE TABLE IF NOT EXISTS tags (
 );
 --rollback ALTER TABLE tags DROP CONSTRAINT spent_tags_fkey;
 --rollback DROP TABLE tags;
+
+--changeset david:3
+ALTER TABLE spent ALTER COLUMN description SET NOT NULL, ALTER COLUMN datetime SET NOT NULL, ALTER COLUMN value SET NOT NULL

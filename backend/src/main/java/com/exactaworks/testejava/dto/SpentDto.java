@@ -4,14 +4,32 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.exactaworks.testejava.model.Spent;
 
 public class SpentDto {
+	
 	private Long id;
+	
+	@NotEmpty(message = "O campo nome da pessoa é obrigatório!")
+	@Length(min = 5, max = 80, message = "O campo nome deve ter entre 5 e 80 caracteres!")
 	private String person;
+	
+	@NotEmpty(message = "O campo descrição é obrigatório!")
+	@Length(min = 3, max = 255, message = "O campo descrição deve ter entre 5 e 255 caracteres!")
 	private String description;
+	
+	@NotNull(message = "O campo data é obrigatório")
 	private Instant datetime;
+	
+	@Positive(message = "O preço não pode ser negativo!")
 	private Double value;
+	
 	private Set<String> tags = new HashSet<>();
 	
 	public SpentDto() {}

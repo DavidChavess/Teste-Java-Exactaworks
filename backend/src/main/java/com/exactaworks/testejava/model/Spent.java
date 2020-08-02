@@ -20,7 +20,7 @@ public class Spent implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long id;	
 	private String person;
 	private String description;
 	private Instant datetime;
