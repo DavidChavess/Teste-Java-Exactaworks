@@ -1,0 +1,131 @@
+html,body{margin: 0; padding: 0; color: black;}
+.main{
+    display: grid;
+    grid-template-areas: "aside section";
+    grid-template-rows: 100vh;
+    grid-template-columns: auto 80vw;
+
+}
+img{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+.section{
+    display: flex;
+    flex-direction: column;
+    grid-area: section;
+}
+.aside{
+    grid-area: aside;
+    background-color: #181b1f;
+    box-shadow: #192027;
+}
+.aside, .section{
+    padding: 50px;
+}
+
+.aside nav ul{
+    display: inline;
+}
+
+.aside nav ul li{
+    list-style: none;
+    margin-bottom:20px ;
+}
+
+.aside nav ul li a{
+    color: #ccc;
+    text-decoration: none;
+}
+.aside nav ul li a:hover{
+    color: #fff;
+}
+
+
+table, th, td{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    font-weight: 800;
+}
+table thead{
+    background-color: #0275d8;
+    color: #FFF;
+}
+table thead tr th {
+    padding: 05px;
+}
+
+table td{
+    padding: 15px;
+}
+table tbody tr{
+    background-color: #cecece;
+}
+}
+
+table tr td#acoes{
+    text-align: center;
+}
+table tr td button{
+    border: none;
+    background-color: #FFF;
+    outline: 0;    
+}  
+
+.section form input, select{
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.section form{
+    flex-direction: column;
+    margin: 15px 0px;
+    box-sizing: border-box;
+}
+
+#formSpent{
+    display: none;
+}
+
+.btn-azul{
+    background-color: #0275d8;
+    color: #FFF;
+    border: none;
+}
+.btn-container{
+    display: flex;
+    margin: 10px;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+.btn-container button{
+    padding: 10px;
+}
+
+.btn-azul:hover{
+    background-color: #0274d8d0;
+    cursor: pointer;
+}
+.table-nome{
+    margin-bottom: 20px;
+}
+.table-nome thead tr th {
+    width: 100%;  
+}
+
+div#mensagem p.message{
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+
+
+
