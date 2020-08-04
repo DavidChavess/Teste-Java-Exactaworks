@@ -63,8 +63,16 @@ table td{
     padding: 15px;
 }
 table tbody tr{
-    background-color: #cecece;
+    background-color: rgb(235, 235, 235);
 }
+ol.tags{
+    background-color: rgb(235, 235, 235);
+    padding: 20px;
+}
+
+ol.tags li{
+    margin-left: 20px;
+    line-height: 25px;
 }
 
 table tr td#acoes{

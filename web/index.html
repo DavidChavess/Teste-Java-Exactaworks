@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Ingredientes</title>
+    <title>Gastos</title>
 </head>
 <body>
     <img src="image/logo.svg" width="150px" alt="" srcset="">
@@ -42,38 +42,19 @@
             
             <form>
                 <label for="">Digite o id do gasto</label>
-                <input type="number" id="idSpent" min="1">
+                <input type="number" id="spentId" min="1">
                 <button type="" class="btn-azul">Procurar</button>
             </form>
 
             <div id="spent">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Id do gasto</th>
-                            <th>Nome do cliente</th>
-                            <th>Descrição</th>
-                            <th>Data/Hora</th>
-                            <th>Valor</th>
-                            <th>Detalhes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>campo da tabela gasto01 </td>
-                            <td>campo da tabela gasto01 </td>
-                            <td>campo da tabela gasto01 </td>
-                            <td>campo da tabela gasto01 </td>
-                            <td>campo da tabela gasto01 </td>
-                            <td>
-                                <form action=""><input type="hidden"><button>ver</button></form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </section>
     </div>
-    <script src="scripts/app.js" ></script>    
+    <script src="scripts/model/Spent.js" ></script>
+    <script src="scripts/view/View.js" ></script> 
+    <script src="scripts/view/SpentView.js" ></script>
+    <script src="scripts/controller/Requests/SpentRequest.js" ></script>   
+    <script src="scripts/controller/SpentController.js" ></script>    
+    <script src="scripts/app.js" ></script>       
 </body>
 </html>
