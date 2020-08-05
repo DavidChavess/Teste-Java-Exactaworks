@@ -17,4 +17,4 @@ btnShow.addEventListener('click', ()=>{
 
 const controller = new SpentController();
 formSearch.addEventListener('submit', controller.findById.bind(controller))
-//controller.findById();
+controller.findAll();

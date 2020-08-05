@@ -3,7 +3,7 @@ class SpentRequest{
         this._url = "http://localhost:8080/";
     }
 
-    findById(endpoint){
+    get(endpoint){
         return fetch(this._url + endpoint, {
             method: 'GET',
             headers: {"Content-Type":"Application/json"}
