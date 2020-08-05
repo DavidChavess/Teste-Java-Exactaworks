@@ -11,9 +11,9 @@ class SpentController {
         .then(response => {
             if(response.status === 404) throw(response.error)
 
-            this._spentView.update(
-                new Spent(response.id, response.person, response.description,
-                     response.value, response.datetime,response.tags));  
+            const spent = new Spent(response.id, response.person, response.description,response.value, response.datetime);
+            spent.addAllTags(response.tags);
+            this._spentView.update(spent); 
         })
         .catch(response => {
             console.log(response)
