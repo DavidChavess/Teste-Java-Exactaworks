@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exactaworks.testejava.dto.SpentDto;
+import com.exactaworks.testejava.dto.SpentDtoNoTags;
 import com.exactaworks.testejava.exception.StandardError;
 import com.exactaworks.testejava.exception.ValidationError;
 import com.exactaworks.testejava.service.SpentService;
@@ -35,7 +36,7 @@ public class SpentController {
 	@ApiOperation(value = "Retorna todos os gastos")
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
-	public List<SpentDto> findAll(){
+	public List<SpentDtoNoTags> findAll(){
 		return service.findAll();
 	}
 	

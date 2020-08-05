@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.exactaworks.testejava.dto.SpentDto;
+import com.exactaworks.testejava.dto.SpentDtoNoTags;
 import com.exactaworks.testejava.exception.ObjectNotFoundException;
 import com.exactaworks.testejava.model.Spent;
 import com.exactaworks.testejava.repository.SpentRepository;
@@ -19,8 +20,8 @@ public class SpentService implements ISpentService {
 	private SpentRepository repository;
 
 	@Override
-	public List<SpentDto> findAll() {
-		return repository.findAll().stream().map(SpentDto::new).collect(Collectors.toList());
+	public List<SpentDtoNoTags> findAll() {
+		return repository.findAll().stream().map(SpentDtoNoTags::new).collect(Collectors.toList());
 	}
 
 	@Override
