@@ -15,23 +15,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Spent implements Serializable{
+public final class Spent implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;	
-	private String person;
-	private String description;
-	private Instant datetime;
-	private Double value;
+	private final Long id;	
+	private final String person;
+	private final String description;
+	private final Instant datetime;
+	private final Double value;
 	
 	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "tags")
 	@Column(name="tag")
 	private Set<String> tags = new HashSet<>();
 	
-	public Spent() {}
+	public Spent() {
+		this.id = null;
+		this.person = "";
+		this.description = "";
+		this.datetime = null;
+		this.value = null;
+	}
 
 	public Spent(Long id, String person, String description, Instant datetime, Double value) {
 		this.id = id;
@@ -45,43 +51,29 @@ public class Spent implements Serializable{
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getPerson() {
 		return person;
-	}
-
-	public void setPerson(String person) {
-		this.person = person;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(Double value) {
-		this.value = value;
-	}
-	
 	public Instant getDatetime() {
 		return datetime;
 	}
-
-	public void setDatetime(Instant datetime) {
-		this.datetime = datetime;
+	
+	public void addTag(String tag) {
+		this.tags.add(tag);
 	}
 
 	public Set<String> getTags() {
-		return tags;
+		Set<String> tagsClone = new HashSet<String>();
+		tagsClone.addAll(tags);
+		return tagsClone;
 	}
 }

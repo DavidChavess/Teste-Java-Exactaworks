@@ -43,7 +43,7 @@ public class SpentService implements ISpentService {
 	
 	private Spent toDto(SpentDto spentDto) {
 		Spent spent = new Spent(null, spentDto.getPerson(),spentDto.getDescription(),spentDto.getDatetime(),spentDto.getValue());
-		spent.getTags().addAll(spentDto.getTags());
+		spentDto.getTags().stream().forEach(spent::addTag);
 		return spent;		
 	}	
 }

@@ -12,27 +12,33 @@ import org.hibernate.validator.constraints.Length;
 
 import com.exactaworks.testejava.model.Spent;
 
-public class SpentDto {
+public final class SpentDto {
 	
-	private Long id;
+	private final Long id;
 	
 	@NotEmpty(message = "O campo nome da pessoa é obrigatório!")
 	@Length(min = 5, max = 80, message = "O campo nome deve ter entre 5 e 80 caracteres!")
-	private String person;
+	private final String person;
 	
 	@NotEmpty(message = "O campo descrição é obrigatório!")
-	@Length(min = 3, max = 255, message = "O campo descrição deve ter entre 5 e 255 caracteres!")
-	private String description;
+	@Length(min = 10, max = 255, message = "O campo descrição deve ter entre 10 e 255 caracteres!")
+	private final String description;
 	
 	@NotNull(message = "O campo data é obrigatório")
-	private Instant datetime;
+	private final Instant datetime;
 	
-	@Positive(message = "O preço não pode ser negativo!")
-	private Double value;
+	@Positive(message = "O campo valor não pode ser negativo!")
+	private final Double value;
 	
 	private Set<String> tags = new HashSet<>();
 	
-	public SpentDto() {}
+	public SpentDto() {
+		this.id = null;
+		this.person = "";
+		this.description = "";
+		this.datetime = null;
+		this.value = null;
+	}
 
 	public SpentDto(Spent spent) {
 		this.id = spent.getId();
@@ -40,50 +46,32 @@ public class SpentDto {
 		this.description = spent.getDescription();
 		this.datetime = spent.getDatetime();
 		this.value = spent.getValue();
-		spent.getTags().stream().forEach(tags::add);
+		tags.addAll(spent.getTags());
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getPerson() {
 		return person;
-	}
-
-	public void setPerson(String person) {
-		this.person = person;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public Instant getDatetime() {
 		return datetime;
-	}
-
-	public void setDatetime(Instant datetime) {
-		this.datetime = datetime;
 	}
 
 	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(Double value) {
-		this.value = value;
-	}
-
 	public Set<String> getTags() {
-		return tags;
+		Set<String> tagsClone = new HashSet<String>();
+		tagsClone.addAll(tags);
+		return tagsClone;
 	}	
 }
