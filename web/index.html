@@ -20,13 +20,13 @@
 
             <form id="formSpent" action="">
                 <label for="">Nome da pessoa</label>
-                <input type="Text" id="person" placeholder="Ex: Juliano">
+                <input type="Text" id="person" placeholder="Ex: Juliano" required minlength="10">
                 <label for="">Descrição</label>
-                <input type="text" id="description" placeholder="Ex: tive que comprar isso porque presiva fazer aquilo">
+                <input type="text" id="description" placeholder="Ex: tive que comprar isso porque presiva fazer aquilo" required minlength="10">
                 <label for="">Valor</label>
-                <input type="number" id="value" min="1" placeholder="Digite as casas decimais com ponto no lugar da virgula, Ex: 0.00">
+                <input type="Text" id="value" placeholder="Ex: 5,00" required>
                 <label for="">Tags</label>
-                <input type="Text" id="tag" placeholder="Para mais de uma tag, coloque ponto e virgula para separar. Ex: (descrição da tag1; descrição da tag2;  descrição da tag3 ... )" min="1">
+                <input type="Text" id="tag" placeholder="Para mais de uma tag, coloque ponto e virgula para separar. Ex: (descrição da tag1; descrição da tag2;  descrição da tag3 ... )" >
                 <button class="btn-azul">Adicionar</button>
             </form>
             
@@ -44,7 +44,10 @@
     <script src="scripts/view/View.js" ></script> 
     <script src="scripts/view/SpentView.js" ></script>
     <script src="scripts/view/SpentViewNoTags.js" ></script>
-    <script src="scripts/controller/Requests/SpentRequest.js" ></script>   
+    <script src="scripts/controller/Requests/SpentRequest.js"></script>
+    <script src="scripts/exception/EmptyFieldException.js"></script> 
+    <script src="scripts/exception/MinTenException.js"></script> 
+    <script src="scripts/controller/ValidationError.js"></script>   
     <script src="scripts/controller/SpentController.js" ></script>    
     <script src="scripts/app.js" ></script>      
 </body>

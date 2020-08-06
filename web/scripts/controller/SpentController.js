@@ -14,14 +14,21 @@ class SpentController {
 
     insert(event){
         event.preventDefault();
-        this._request.post('spents', this._newSpent())
-        .then(response => {
-            const spent = new Spent(response.id, response.person, response.description,response.value, response.datetime);
-            spent.addAllTags(response.tags);
-            this._spentView.update(spent); 
-        })
+        try{
+            this._request.post('spents', this._newSpent())
+            .then(response => {
+                const spent = new Spent(response.id, response.person, response.description,response.value, response.datetime);
+                spent.addAllTags(response.tags);
+                this._spentView.update(spent); 
+            })
+            .catch(response => {
+                alert(response)
+            }) 
+        }catch(error){
+            alert(error.message);
+        }      
     }
-    
+
     findById(event){
         event.preventDefault();
         this._getById(this._spentId.value);
@@ -66,11 +73,11 @@ class SpentController {
     _newSpent(){
         return {
             id : null,
-            person : this._person.value,
-            description : this._description.value,
-            value : this._value.value,
+            person : ValidationError.isEmptyOrMinTen(this._person.value),
+            description : ValidationError.isEmptyOrMinTen(this._description.value),
+            value : parseFloat(ValidationError.isEmpty(this._value.value.replace(',' , '.'))),
             datetime : new Date(),
             tags : this._tag.value.split(';')
-        };
+        }   
     }
 }
