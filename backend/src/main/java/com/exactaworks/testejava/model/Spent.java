@@ -20,10 +20,19 @@ public final class Spent implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", unique = true, updatable = false)
 	private final Long id;	
-	private final String person;
+	
+	@Column(name = "parson_name", nullable = false)
+	private final String personName;
+	
+	@Column(name = "description", nullable = false)
 	private final String description;
+
+	@Column(name = "datetime", nullable = false)
 	private final Instant datetime;
+	
+	@Column(name = "value", nullable = false)
 	private final Double value;
 	
 	@ElementCollection(fetch = FetchType.LAZY)
@@ -33,15 +42,15 @@ public final class Spent implements Serializable{
 	
 	public Spent() {
 		this.id = null;
-		this.person = "";
+		this.personName = "";
 		this.description = "";
 		this.datetime = null;
 		this.value = null;
 	}
 
-	public Spent(Long id, String person, String description, Instant datetime, Double value) {
+	public Spent(Long id, String personName, String description, Instant datetime, Double value) {
 		this.id = id;
-		this.person = person; 
+		this.personName = personName; 
 		this.description = description;
 		this.datetime = datetime;
 		this.value = value;
@@ -51,8 +60,8 @@ public final class Spent implements Serializable{
 		return id;
 	}
 
-	public String getPerson() {
-		return person;
+	public String getPersonName() {
+		return personName;
 	}
 
 	public String getDescription() {

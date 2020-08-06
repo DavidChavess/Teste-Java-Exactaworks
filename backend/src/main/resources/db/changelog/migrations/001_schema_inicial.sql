@@ -5,10 +5,10 @@ CREATE SEQUENCE IF NOT EXISTS hibernate_sequence;
 
 CREATE TABLE IF NOT EXISTS spent (
     id BIGINT NOT NULL CONSTRAINT spent_pkey PRIMARY KEY,
-    person varchar(255) NOT NULL,
+    parson_name varchar(255) NOT NULL,
     description VARCHAR(255),
-    datetime TIMESTAMP NOT NULL,
-    value DOUBLE PRECISION NOT NULL
+    datetime TIMESTAMP,
+    value DOUBLE PRECISION
 );
 
 --rollback DROP TABLE spent

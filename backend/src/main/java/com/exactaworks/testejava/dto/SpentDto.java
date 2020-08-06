@@ -17,8 +17,8 @@ public final class SpentDto {
 	private final Long id;
 	
 	@NotEmpty(message = "O campo nome da pessoa é obrigatório!")
-	@Length(min = 5, max = 80, message = "O campo nome deve ter entre 5 e 80 caracteres!")
-	private final String person;
+	@Length(min = 10, max = 255, message = "O campo nome deve ter entre 5 e 80 caracteres!")
+	private final String personName;
 	
 	@NotEmpty(message = "O campo descrição é obrigatório!")
 	@Length(min = 10, max = 255, message = "O campo descrição deve ter entre 10 e 255 caracteres!")
@@ -34,7 +34,7 @@ public final class SpentDto {
 	
 	public SpentDto() {
 		this.id = null;
-		this.person = "";
+		this.personName = "";
 		this.description = "";
 		this.datetime = null;
 		this.value = null;
@@ -42,7 +42,7 @@ public final class SpentDto {
 
 	public SpentDto(Spent spent) {
 		this.id = spent.getId();
-		this.person = spent.getPerson();
+		this.personName = spent.getPersonName();
 		this.description = spent.getDescription();
 		this.datetime = spent.getDatetime();
 		this.value = spent.getValue();
@@ -53,8 +53,8 @@ public final class SpentDto {
 		return id;
 	}
 
-	public String getPerson() {
-		return person;
+	public String getPersonName() {
+		return personName;
 	}
 
 	public String getDescription() {

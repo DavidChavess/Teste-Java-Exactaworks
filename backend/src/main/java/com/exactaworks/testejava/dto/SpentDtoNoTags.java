@@ -7,14 +7,14 @@ import com.exactaworks.testejava.model.Spent;
 public final class SpentDtoNoTags {
 	
 	private final Long id;
-	private final String person;
+	private final String personName;
 	private final String description;
 	private final Instant datetime;
 	private final Double value;
 	
 	public SpentDtoNoTags() {
 		this.id = null;
-		this.person = "";
+		this.personName = "";
 		this.description = "";
 		this.datetime = null;
 		this.value = null;
@@ -22,7 +22,7 @@ public final class SpentDtoNoTags {
 
 	public SpentDtoNoTags(Spent spent) {
 		this.id = spent.getId();
-		this.person = spent.getPerson();
+		this.personName = spent.getPersonName();
 		this.description = spent.getDescription();
 		this.datetime = spent.getDatetime();
 		this.value = spent.getValue();
@@ -32,8 +32,8 @@ public final class SpentDtoNoTags {
 		return id;
 	}
 
-	public String getPerson() {
-		return person;
+	public String getPersonName() {
+		return personName;
 	}
 
 	public String getDescription() {
