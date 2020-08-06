@@ -19,10 +19,14 @@ class SpentViewNoTags extends View{
                         <td>${spent.getDescription()}</td>
                         <td>${spent.getDate()}</td>
                         <td>${spent.getValue()}</td>
-                        <td><form class='iptu'><input type='hidden' value = ${spent.getId()} /><button>ver</button></form></td>
+                        <td><form class='details'><input type='hidden' value = ${spent.getId()} /><button>ver</button></form></td>
                     </tr>`
                 }).join('')}
             </tbody>
         </table>`;
+    }
+
+    details(){
+        return document.getElementsByClassName('details');
     }
 }
