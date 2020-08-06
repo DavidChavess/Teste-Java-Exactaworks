@@ -12,12 +12,11 @@ import com.exactaworks.testejava.exception.ObjectNotFoundException;
 import com.exactaworks.testejava.exception.StandardError;
 import com.exactaworks.testejava.exception.ValidationError;
 
-import liquibase.exception.ValidationErrors;
-
 @ControllerAdvice
+@ResponseBody
 public class ControllerExceptionHandler {
 
-	@ResponseBody
+
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ExceptionHandler(ObjectNotFoundException.class)
 	public StandardError objectNotFound(ObjectNotFoundException e) {
@@ -25,7 +24,7 @@ public class ControllerExceptionHandler {
 	}
 	
 
-	@ResponseBody
+
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ValidationError validationError(MethodArgumentNotValidException e) {
