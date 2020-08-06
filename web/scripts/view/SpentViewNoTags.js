@@ -15,9 +15,9 @@ class SpentViewNoTags extends View{
                 ${spents.map(spent => {
                     return `<tr>
                         <td>${spent.getId()}</td>
-                        <td>${spent.getPerson()}</td>
+                        <td>${spent.getPersonName()}</td>
                         <td>${spent.getDescription()}</td>
-                        <td>${spent.getDate()}</td>
+                        <td>${DateConverter.dateToString(spent.getDate())}</td>
                         <td>${spent.getValue()}</td>
                         <td><form class='details'><input type='hidden' value = ${spent.getId()} /><button>ver</button></form></td>
                     </tr>`

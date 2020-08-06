@@ -20,7 +20,7 @@
 
             <form id="formSpent" action="">
                 <label for="">Nome da pessoa</label>
-                <input type="Text" id="person" placeholder="Ex: Juliano" required minlength="10">
+                <input type="Text" id="personName" placeholder="Ex: Juliano" required minlength="10">
                 <label for="">Descrição</label>
                 <input type="text" id="description" placeholder="Ex: tive que comprar isso porque presiva fazer aquilo" required minlength="10">
                 <label for="">Valor</label>
@@ -40,6 +40,8 @@
             </div>
         </section>
     </div>
+    
+    <script src="scripts/utils/DateConverter.js" ></script>
     <script src="scripts/model/Spent.js" ></script>
     <script src="scripts/view/View.js" ></script> 
     <script src="scripts/view/SpentView.js" ></script>

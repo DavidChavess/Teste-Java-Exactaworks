@@ -13,9 +13,9 @@ class SpentView extends View{
             <tbody>
                 <tr>
                     <td>${spent.getId()}</td>
-                    <td>${spent.getPerson()}</td>
+                    <td>${spent.getPersonName()}</td>
                     <td>${spent.getDescription()}</td>
-                    <td>${spent.getDate()}</td>
+                    <td>${DateConverter.dateToString(spent.getDate())}</td>
                     <td>${spent.getValue()}</td>
                 </tr>
             </tbody>

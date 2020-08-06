@@ -1,7 +1,7 @@
 class SpentController {
     constructor(){      
         const $ = document.querySelector.bind(document);
-        this._person = $('#person');
+        this._personName = $('#personName');
         this._description = $('#description');
         this._value = $('#value');
         this._tag = $('#tag');
@@ -17,13 +17,14 @@ class SpentController {
         try{
             this._request.post('spents', this._newSpent())
             .then(response => {
-                const spent = new Spent(response.id, response.person, response.description,response.value, response.datetime);
+                const spent = new Spent(response.id, response.personName, response.description,response.value, response.datetime);
                 spent.addAllTags(response.tags);
                 this._spentView.update(spent); 
             })
             .catch(response => {
                 alert(response)
             }) 
+            this._cleanFields();
         }catch(error){
             alert(error.message);
         }      
@@ -37,7 +38,7 @@ class SpentController {
     findAll(){
         this._request.get(`spents`)
         .then(response => {   
-            this._spentViewNoTags.update(response.map(spent => new Spent(spent.id, spent.person, spent.description,spent.value, spent.datetime)))
+            this._spentViewNoTags.update(response.map(spent => new Spent(spent.id, spent.personName, spent.description,spent.value, spent.datetime)))
             this._eventSpentDetails();
         })
         .catch(response => {
@@ -60,7 +61,7 @@ class SpentController {
         .then(response => {
             if(response.status === 404) throw(response.error)
 
-            const spent = new Spent(response.id, response.person, response.description,response.value, response.datetime);
+            const spent = new Spent(response.id, response.personName, response.description,response.value, response.datetime);
             console.log(spent);
             spent.addAllTags(response.tags);
             this._spentView.update(spent); 
@@ -70,10 +71,17 @@ class SpentController {
         })
     }
 
+    _cleanFields(){
+        this._personName.value = '';
+        this._description.value = '',
+        this._value.value = 0,0;
+        this._tag.value = '';
+    }
+
     _newSpent(){
         return {
             id : null,
-            person : ValidationError.isEmptyOrMinTen(this._person.value),
+            personName : ValidationError.isEmptyOrMinTen(this._personName.value),
             description : ValidationError.isEmptyOrMinTen(this._description.value),
             value : parseFloat(ValidationError.isEmpty(this._value.value.replace(',' , '.'))),
             datetime : new Date(),

@@ -1,6 +1,6 @@
 class Spent{
-    constructor(_id, _person, _description, _value, _date){
-        Object.assign(this, { _id, _person, _description, _value })
+    constructor(_id, _personName, _description, _value, _date){
+        Object.assign(this, { _id, _personName, _description, _value })
         this._date = new Date(_date);
         this._tags = [];
 
@@ -11,8 +11,8 @@ class Spent{
         return this._id;
     }
 
-    getPerson(){
-        return this._person;
+    getPersonName(){
+        return this._personName;
     }
 
     getDescription(){
