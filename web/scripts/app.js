@@ -1,4 +1,5 @@
 const btnShow = document.getElementById('show');
+const btnFindAll = document.getElementById('findAll');
 const form = document.forms[0];
 const formSearch = document.forms[1];
 let flagShow = false;
@@ -16,5 +17,7 @@ btnShow.addEventListener('click', ()=>{
 })
 
 const controller = new SpentController();
+form.addEventListener('submit', controller.insert.bind(controller));
 formSearch.addEventListener('submit', controller.findById.bind(controller))
-controller.findAll();
+btnFindAll.addEventListener('click',  controller.findAll.bind(controller));
+

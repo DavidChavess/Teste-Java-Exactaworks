@@ -1,10 +1,7 @@
-html,body{margin: 0; padding: 0; color: black;}
+html,body{margin: 0; padding: 0; color: black; background-color: #ccc;}
 .main{
-    display: grid;
-    grid-template-areas: "aside section";
-    grid-template-rows: 100vh;
-    grid-template-columns: auto 80vw;
-
+    display: flex;
+    justify-content: center;
 }
 img{
     position: absolute;
@@ -12,36 +9,8 @@ img{
     right: 20px;
 }
 .section{
-    display: flex;
-    flex-direction: column;
-    grid-area: section;
+   width: 75vw;
 }
-.aside{
-    grid-area: aside;
-    background-color: #181b1f;
-    box-shadow: #192027;
-}
-.aside, .section{
-    padding: 50px;
-}
-
-.aside nav ul{
-    display: inline;
-}
-
-.aside nav ul li{
-    list-style: none;
-    margin-bottom:20px ;
-}
-
-.aside nav ul li a{
-    color: #ccc;
-    text-decoration: none;
-}
-.aside nav ul li a:hover{
-    color: #fff;
-}
-
 
 table, th, td{
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -75,19 +44,12 @@ ol.tags li{
     line-height: 25px;
 }
 
-table tr td#acoes{
-    text-align: center;
-}
-table tr td button{
-    border: none;
-    background-color: #FFF;
-    outline: 0;    
-}  
 
-.section form input, select{
+.section form input{
     width: 100%;
-    padding: 5px;
+    padding: 8px;
     box-sizing: border-box;
+    margin: 5px 0;
 }
 
 .section form{
@@ -104,15 +66,19 @@ table tr td button{
     background-color: #0275d8;
     color: #FFF;
     border: none;
+    position: relative;
+    padding: 10px;
+    width: 80px;
 }
 .btn-container{
     display: flex;
     margin: 10px;
-    justify-content: flex-end;
+    justify-content: center;
     box-sizing: border-box;
 }
 .btn-container button{
     padding: 10px;
+    margin: 10px;
 }
 
 .btn-azul:hover{
