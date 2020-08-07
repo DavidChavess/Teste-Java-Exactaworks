@@ -26,7 +26,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias backend e web:
 - Java 11
 - JPA
 - Hibernate
-- Documentação com Swagger
+- Documentação com Swagger <a href= 'http://localhost:8080/swagger-ui.html'>link</a>
 - PostgreSQL
 - Versionamento de banco de dados com Liquibase
 ### web
@@ -40,7 +40,7 @@ Antes de seguir o passo a passo, você irá precisar ter o Java instalado no seu
 
 ### Configuração do Banco de Dados
 
-1. Faça o download do PostgreSQL e instale no seu computador
+1. Faça o download do PostgreSQL e instale no seu computador</br> <a href='https://www.enterprisedb.com/downloads/postgres-postgresql-downloads'>Download</a>
 </br> <b>obs</b>: você precisa instalar na porta padrão que é 5432 e colocar a senha 1234567
 
 2. Crie um banco de dados com o nome: testebackend-db
@@ -78,3 +78,6 @@ Antes de seguir o passo a passo, você irá precisar ter o Java instalado no seu
 </br>
 9. Agora é só navegar até a raiz do projeto, entre na pasta web, e abri o arquivo index.html.
 
+## Considerações
+
+Neste projeto web não foi abordado responsividade de tela, então é fortemente recomendado que você utilize uma tela igual ou superior a 960px. Também poderia ser utilizado o docker para facilitar a configuração do banco de dados e evitar de ter que baixar manualmente, porem não optei por usar o docker, uma vez que o mesmo tem uma difícil instalação no windows 10 Home.
