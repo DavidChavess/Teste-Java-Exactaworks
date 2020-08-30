@@ -17,7 +17,7 @@ public final class SpentDto {
 	private final Long id;
 	
 	@NotEmpty(message = "O campo nome da pessoa é obrigatório!")
-	@Length(min = 10, max = 255, message = "O campo nome deve ter entre 10 e 255 caracteres!")
+	@Length(min = 10, max = 255, message = "O campo nome da pessoa deve ter entre 10 e 255 caracteres!")
 	private final String personName;
 	
 	@NotEmpty(message = "O campo descrição é obrigatório!")
@@ -27,6 +27,7 @@ public final class SpentDto {
 	@NotNull(message = "O campo data é obrigatório")
 	private final Instant datetime;
 	
+	@NotNull(message = "O campo valor é obrigatório")
 	@Positive(message = "O campo valor não pode ser negativo!")
 	private final Double value;
 	
