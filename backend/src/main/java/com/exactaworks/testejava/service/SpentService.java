@@ -5,7 +5,7 @@ import java.util.List;
 import com.exactaworks.testejava.dto.SpentDto;
 import com.exactaworks.testejava.dto.SpentDtoNoTags;
 
-public interface ISpentService {
+public interface SpentService {
 	
 	List<SpentDtoNoTags> findAll();
 	SpentDto findById(Long id);
