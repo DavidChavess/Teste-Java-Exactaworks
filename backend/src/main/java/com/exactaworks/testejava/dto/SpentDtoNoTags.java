@@ -1,13 +1,13 @@
 package com.exactaworks.testejava.dto;
 
-import java.time.Instant;
+import java.time.OffsetDateTime;
 
 public class SpentDtoNoTags {
 	
 	private Long id;
 	private String personName;
 	private String description;
-	private Instant datetime;
+	private OffsetDateTime datetime;
 	private Double value;
 	
 	public SpentDtoNoTags() {}
@@ -36,11 +36,11 @@ public class SpentDtoNoTags {
 		this.description = description;
 	}
 
-	public Instant getDatetime() {
+	public OffsetDateTime getDatetime() {
 		return datetime;
 	}
 
-	public void setDatetime(Instant datetime) {
+	public void setDatetime(OffsetDateTime datetime) {
 		this.datetime = datetime;
 	}
 
