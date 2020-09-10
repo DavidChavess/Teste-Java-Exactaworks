@@ -3,8 +3,11 @@ package com.exactaworks.testejava.controller;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,18 +30,27 @@ import io.swagger.annotations.ApiResponses;
 @RequestMapping("/spents")
 public class SpentController {
 	
-	@Autowired
 	private SpentService service;
-	
+
+	public SpentController(SpentService service){
+		this.service = service;
+	}
+
 	@ApiOperation(value = "Retorna todos os gastos")
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public List<SpentDtoNoTags> findAll(){
 		return service.findAll();
 	}
-	
+
+	@GetMapping(value = "/filters")
+	@ResponseStatus(HttpStatus.OK)
+	public Page<SpentDtoNoTags> find(SpentDto spentDto, Pageable pageRequest){
+		return service.find(spentDto, pageRequest);
+	}
+
 	@ApiOperation(value = "Retorna um gasto por id")
-	@ApiResponses(value = @ApiResponse(code = 404, message = "Gasto não encontrado", response = StandardError.class))
+	@ApiResponses(value = @ApiResponse(code = 404, message = "Gasto nï¿½o encontrado", response = StandardError.class))
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public SpentDto findById(@PathVariable Long id){
@@ -46,7 +58,7 @@ public class SpentController {
 	}	
 	
 	@ApiOperation(value = "Insere um gasto")
-	@ApiResponses(value = @ApiResponse(code = 400, message = "Erro de validação", response = StandardError.class))
+	@ApiResponses(value = @ApiResponse(code = 400, message = "Erro de validaï¿½ï¿½o", response = StandardError.class))
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public SpentDto insert(@RequestBody @Valid SpentDto spentDto) {

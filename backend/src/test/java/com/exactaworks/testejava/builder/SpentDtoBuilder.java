@@ -1,4 +1,4 @@
-package com.exactaworks.testejava.Builder;
+package com.exactaworks.testejava.builder;
 
 import java.time.OffsetDateTime;
 import java.util.Set;
@@ -15,8 +15,8 @@ public class SpentDtoBuilder {
 		SpentDtoBuilder builder = new SpentDtoBuilder();
 		builder.spentDto = new SpentDto();
 		builder.spentDto.setId(1l);
-		builder.spentDto.setPersonName("Fulano que não vai dar erro");
-		builder.spentDto.setDescription("Gasto 1 que não vai dar erro");
+		builder.spentDto.setPersonName("Fulano que nï¿½o vai dar erro");
+		builder.spentDto.setDescription("Gasto 1 que nï¿½o vai dar erro");
 		builder.spentDto.setValue(9.99);
 		builder.spentDto.setTags(Set.of("Tag 1", "Tag 2","Tag 3"));
 		return builder;
