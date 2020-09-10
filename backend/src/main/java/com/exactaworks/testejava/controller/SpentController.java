@@ -7,6 +7,7 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +46,8 @@ public class SpentController {
 
 	@GetMapping(value = "/filters")
 	@ResponseStatus(HttpStatus.OK)
+	@ApiOperation(value = "Retorna todos os gastos filtrados por parametros na url")
+	@ApiResponses(value = @ApiResponse(code = 200, message = "gastos paginados", response = Page.class))
 	public Page<SpentDtoNoTags> find(SpentDto spentDto, Pageable pageRequest){
 		return service.find(spentDto, pageRequest);
 	}

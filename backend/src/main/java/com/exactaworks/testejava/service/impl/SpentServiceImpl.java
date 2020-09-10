@@ -56,13 +56,7 @@ public class SpentServiceImpl implements SpentService {
 				.withIgnoreCase()
 				.withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING));
 
-		Page<Spent> page = repository.findAll(example, pageRequest);
-
-		List<SpentDtoNoTags> list = page
-				.getContent().stream()
-				.map(spent -> mapper.map(spent, SpentDtoNoTags.class))
-				.collect(Collectors.toList());
-
-		return new PageImpl<SpentDtoNoTags>(list, pageRequest, page.getTotalElements());
+		return repository.findAll(example, pageRequest)
+				.map(spent -> mapper.map(spent, SpentDtoNoTags.class));
 	}
 }
