@@ -38,7 +38,7 @@ public class SpentServiceImpl implements SpentService {
 	public SpentDto findById(Long id) {
 		return repository.findById(id)
 				.map(spent -> mapper.map(spent, SpentDto.class))
-				.orElseThrow(() -> new ObjectNotFoundException("Gasto n�o encontrado, id= " + id));
+				.orElseThrow(() -> new ObjectNotFoundException("Gasto não encontrado, id= " + id));
 	}
 
 	@Override

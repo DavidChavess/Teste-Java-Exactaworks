@@ -21,6 +21,11 @@ public class SpentDtoNoTagsBuilder {
 		return builder;
 	}
 
+	public SpentDtoNoTagsBuilder withId(Long id){
+		this.spentDtoNoTags.setId(id);
+		return this;
+	}
+
 	public SpentDtoNoTagsBuilder withPersonName(String name){
 		this.spentDtoNoTags.setPersonName(name);
 		return this;
