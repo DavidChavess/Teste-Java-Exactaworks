@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import com.exactaworks.testejava.dto.SpentDto;
@@ -17,11 +18,13 @@ import com.exactaworks.testejava.service.SpentService;
 @Service
 public class SpentServiceImpl implements SpentService {
 
-	@Autowired
 	private SpentRepository repository;
-
-	@Autowired
 	private ModelMapper mapper;
+
+	public SpentServiceImpl(SpentRepository repository, ModelMapper mapper){
+		this.repository = repository;
+		this.mapper = mapper;
+	}
 
 	@Override
 	public List<SpentDtoNoTags> findAll() {
@@ -35,7 +38,7 @@ public class SpentServiceImpl implements SpentService {
 	public SpentDto findById(Long id) {
 		return repository.findById(id)
 				.map(spent -> mapper.map(spent, SpentDto.class))
-				.orElseThrow(() -> new ObjectNotFoundException("Gasto n„o encontrado, id= " + id));
+				.orElseThrow(() -> new ObjectNotFoundException("Gasto n√£o encontrado, id= " + id));
 	}
 
 	@Override
@@ -45,4 +48,15 @@ public class SpentServiceImpl implements SpentService {
 		return mapper.map(spent, SpentDto.class);
 	}
 
+	@Override
+	public Page<SpentDtoNoTags> find(SpentDto spentDto, Pageable pageRequest) {
+		Example<Spent> example = Example.of(mapper.map(spentDto, Spent.class),
+				ExampleMatcher.matching()
+				.withIgnoreNullValues()
+				.withIgnoreCase()
+				.withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING));
+
+		return repository.findAll(example, pageRequest)
+				.map(spent -> mapper.map(spent, SpentDtoNoTags.class));
+	}
 }

@@ -1,6 +1,6 @@
 package com.exactaworks.testejava.dto;
 
-import java.time.Instant;
+import java.time.OffsetDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,8 +22,7 @@ public class SpentDto {
 	@Length(min = 10, max = 255, message = "O campo descrição deve ter entre 10 e 255 caracteres!")
 	private String description;
 	
-	@NotNull(message = "O campo data é obrigatório")
-	private Instant datetime;
+	private OffsetDateTime datetime;
 	
 	@NotNull(message = "O campo valor é obrigatório")
 	@Positive(message = "O campo valor não pode ser negativo!")
@@ -57,11 +56,11 @@ public class SpentDto {
 		this.description = description;
 	}
 
-	public Instant getDatetime() {
+	public OffsetDateTime getDatetime() {
 		return datetime;
 	}
 
-	public void setDatetime(Instant datetime) {
+	public void setDatetime(OffsetDateTime datetime) {
 		this.datetime = datetime;
 	}
 

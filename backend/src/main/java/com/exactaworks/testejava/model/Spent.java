@@ -1,7 +1,7 @@
 package com.exactaworks.testejava.model;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.OffsetDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,7 +30,7 @@ public class Spent implements Serializable{
 	private String description;
 
 	@Column(name = "datetime", nullable = false)
-	private Instant datetime;
+	private OffsetDateTime datetime;
 	
 	@Column(name = "value", nullable = false)
 	private Double value;
@@ -66,11 +66,11 @@ public class Spent implements Serializable{
 		this.description = description;
 	}
 
-	public Instant getDatetime() {
+	public OffsetDateTime getDatetime() {
 		return datetime;
 	}
 
-	public void setDatetime(Instant datetime) {
+	public void setDatetime(OffsetDateTime datetime) {
 		this.datetime = datetime;
 	}
 
