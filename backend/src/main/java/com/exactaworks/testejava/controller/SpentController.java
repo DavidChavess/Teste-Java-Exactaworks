@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.exactaworks.testejava.controller.exceptionHandler.StandardError;
 import com.exactaworks.testejava.dto.SpentDto;
 import com.exactaworks.testejava.dto.SpentDtoNoTags;
-import com.exactaworks.testejava.exception.StandardError;
-import com.exactaworks.testejava.exception.ValidationError;
-import com.exactaworks.testejava.service.SpentService;
+import com.exactaworks.testejava.service.impl.SpentServiceImpl;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -31,7 +30,7 @@ import io.swagger.annotations.ApiResponses;
 public class SpentController {
 	
 	@Autowired
-	private SpentService service;
+	private SpentServiceImpl service;
 	
 	@ApiOperation(value = "Retorna todos os gastos")
 	@GetMapping
@@ -49,7 +48,7 @@ public class SpentController {
 	}	
 	
 	@ApiOperation(value = "Insere um gasto")
-	@ApiResponses(value = @ApiResponse(code = 400, message = "Erro de validação", response = ValidationError.class))
+	@ApiResponses(value = @ApiResponse(code = 400, message = "Erro de validação", response = StandardError.class))
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public SpentDto insert(@RequestBody @Valid SpentDto spentDto) {

@@ -15,74 +15,78 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public final class Spent implements Serializable{
+public class Spent implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, updatable = false)
-	private final Long id;	
+	private Long id;	
 	
 	@Column(name = "parson_name", nullable = false)
-	private final String personName;
+	private String personName;
 	
 	@Column(name = "description", nullable = false)
-	private final String description;
+	private String description;
 
 	@Column(name = "datetime", nullable = false)
-	private final Instant datetime;
+	private Instant datetime;
 	
 	@Column(name = "value", nullable = false)
-	private final Double value;
+	private Double value;
 	
 	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "tags")
 	@Column(name="tag")
 	private Set<String> tags = new HashSet<>();
 	
-	public Spent() {
-		this.id = null;
-		this.personName = "";
-		this.description = "";
-		this.datetime = null;
-		this.value = null;
-	}
-
-	public Spent(Long id, String personName, String description, Instant datetime, Double value) {
-		this.id = id;
-		this.personName = personName; 
-		this.description = description;
-		this.datetime = datetime;
-		this.value = value;
-	}
+	public Spent() {}
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getPersonName() {
 		return personName;
 	}
 
+	public void setPersonName(String personName) {
+		this.personName = personName;
+	}
+
 	public String getDescription() {
 		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Instant getDatetime() {
+		return datetime;
+	}
+
+	public void setDatetime(Instant datetime) {
+		this.datetime = datetime;
 	}
 
 	public Double getValue() {
 		return value;
 	}
 
-	public Instant getDatetime() {
-		return datetime;
-	}
-	
-	public void addTag(String tag) {
-		this.tags.add(tag);
+	public void setValue(Double value) {
+		this.value = value;
 	}
 
 	public Set<String> getTags() {
-		Set<String> tagsClone = new HashSet<String>();
-		tagsClone.addAll(tags);
-		return tagsClone;
+		return tags;
+	}
+
+	public void setTags(Set<String> tags) {
+		this.tags = tags;
 	}
 }
